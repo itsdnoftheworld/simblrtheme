@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>only living boy in san myushno</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+    <style>
+    nav {
+    background: #000;
+    margin: 0 0 1em;
+    padding: 0;
+    position: relative;
+    width: 100%;
+    z-index: 9900;
+}
+
+ul.menu {
+    display: none;
+    float: left;
+    margin-left: -0.5rem;
+    padding: 0;
+    position: absolute;
+    background-color: #ddd;
+    color: #000;
+    font-size: 1.25rem;
+    list-style-type: none;
+}
+
+#macoslogo img {
+    height: 1.25rem;
+    width: 1.25rem;
+}
+
+.nav-list #time,
+.nav-list #macoslogo {
+    float: right;
+}
+
+.nav-list li {
+    float: left;
+    height: 1.75rem;
+    line-height: 1.5rem;
+    padding: 0.25rem 0.5rem 0;
+}
+
+.nav-list li:hover ul.menu li img {
+    margin-left: -1.25em;
+    margin-right: 0.25em;
+}
+
+.nav-list li:hover ul.menu li {
+    clear: both;
+    padding: 0.25em 1em 1.5em 2em;
+    width: 100%;
+}
+
+.nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+.nav-wrapper {
+    background-color: #ddd;
+    display: inline-block;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.nav-list #time:hover {
+    background-color: inherit;
+    color: inherit;
+}
+
+.nav-wrapper ul li:hover {
+    background-color: #339;
+    color: #fff;
+}
+
+.nav-list ul > li.noimg {
+    padding-left: 1em !important;
+}
+
+.nav-wrapper ul li.disabled {
+    color: #777;
+}
+
+.nav-wrapper ul li.disabled:hover {
+    background-color: #777;
+    color: #fff;
+}
+
+.nav-wrapper ul {
+    font-size: 1.25rem;
+}
+
+#app-menu {
+    right: 0;
+}
+    @font-face {
+    font-family: "Chicago";
+    src: url("https://dl.dropboxusercontent.com/scl/fi/c5hb51767hfhxw1e6wegv/ChicagoFLF.ttf?rlkey=5l7nf7m0jxmnsnzdtdzjskdpq&dl=0") format("truetype");
+}
+        body {
+            background-image: url("https://wallpapercave.com/wp/wp2812464.jpg");
+            font-family: "Lucida Grande", sans-serif;
+            display: flex;
+            justify-content: center;
+        }
+
+        .window {
+            width: 1000px;
+            margin: 40px auto;
+            background-color: white;
+            border: 2px solid #4b4a48;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+
+        .title-bar {
+            background-color: #bdbdbd;
+            padding: 10px;
+            border-bottom: 1px solid #4b4a48;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family:"Chicago";
+        }
+
+        .title-bar .buttons {
+            display: flex;
+        }
+
+        .title-bar .buttons button {
+            width: 15px;
+            height: 15px;
+            margin-right: 5px;
+            border-radius: 50%;
+            border: none;
+        }
+
+        .title-bar .buttons .close { background-color: red; }
+        .title-bar .buttons .minimize { background-color: yellow; }
+        .title-bar .buttons .maximize { background-color: green; }
+
+        .content {
+            padding: 20px;
+            overflow-y: scroll;
+            width: calc(100% - 200px);
+        }
+
+        .scroll-bar {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 15px;
+            height: 100%;
+            background: #c3c3c3;
+        }
+
+        .post {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #4b4a48;
+            background: #f5f5f5;
+        }
+
+        .post h2 {
+            font-size: 18px;
+            margin: 0 0 10px;
+        }
+
+        .post-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+
+        .post-meta .tags {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .post-meta .tags a {
+            margin-right: 5px;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .post-meta .tags a:hover {
+            text-decoration: underline;
+        }
+
+        .post-meta .date,
+        .post-meta .notes {
+            color: #333;
+        }
+
+        .content .post:not(:last-child) {
+            border-bottom: none;
+        }
+
+        .content .post:not(:first-child) {
+            border-top: none;
+        }
+
+        @media (max-width: 1024px) {
+            .window {
+                width: 100%;
+            }
+
+            .sidebar {
+                width: 150px;
+            }
+
+            .content {
+                width: calc(100% - 150px);
+            }
+        }
+.modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Dark background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.command_button {
+    cursor: pointer;
+    background: #bdbdbd;
+    padding: 10px;
+    border: none;
+    border-radius: 5px
+    /* Add more styling as needed */
+}
+
+    </style>
+</head>
+<body>
+<div id="boot" class="modal">
+    <button class="command_button boot-button close-button" id="boot-button">
+        <img src="https://github.com/robbiebyrd/platinum/blob/main/img/mac.png?raw=true" />
+        <br />Boot
+    </button>
+</div>
+    <div id="blog-container" style="display: none;">
+        <nav>
+            <div class="nav-wrapper">
+                <ul class="nav-list">
+                    <li id="apple-logo">
+                        <img src="https://github.com/robbiebyrd/platinum/blob/main/img/apple.png?raw=true" />
+                    </li>
+                    <li>
+                         <a href="/about">About</a>
+                    </li>
+                    <li>
+                         <a href="/ask">Ask</a>
+                    </li>
+                    <li>
+                         <a href="/resources">Resources</a>
+                    </li>
+                    <li id="macoslogo" class="nav-list">
+                        <img src="img/macos.svg" alt="MacOS" />
+                        <ul id="app-menu" class="menu">
+                        </ul>
+                    </li>
+                    <li id="time" class="time text-center timeText">Loading...</li>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    <div class="window">
+        <div class="content-window">
+            <div class="title-bar">
+                <h1>only living boy in san myshuno</h1>
+            </div>
+            <div class="content">
+                {block:Posts}
+                    <div class="post">
+                        <h2>{Title}</h2>
+                        {Body}
+                        <div class="post-meta">
+                            <p class="tags">Tags: {block:Tags}<a href="{TagURL}">{Tag}</a>{/block:Tags}</p>
+                            <p class="date">Posted on: {TimeAgo}</p>
+                            <p class="notes">Notes: {NoteCount}</p>
+                        </div>
+                    </div>
+                {/block:Posts}
+            </div>
+            <div class="scroll-bar"></div>
+        </div>
+    </div>
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script>
+                // Function to update the clock
+        function updateClock() {
+            var now = new Date();
+            var hours = now.getHours();
+            var minutes = now.getMinutes();
+            var seconds = now.getSeconds();
+
+            // Add leading zeros if needed
+            hours = hours < 10 ? '0' + hours : hours;
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+            seconds = seconds < 10 ? '0' + seconds : seconds;
+
+            // Combine into a string and set as the text of the #time element
+            var timeString = hours + ':' + minutes + ':' + seconds;
+            $('#time').text(timeString);
+        }
+
+        // Update the clock immediately
+        updateClock();
+
+        // Update the clock every 1000 milliseconds (1 second)
+        setInterval(updateClock, 1000);
+
+        // Check if the user has visited before
+        $(document).ready(function() {
+            if (localStorage.getItem('visitedBefore') !== 'true') {
+                // If not, show the boot screen
+                $('#boot').show();
+            }
+
+            $('#boot-button').click(function() {
+                $('#boot').fadeOut(); // Hide the boot screen
+                $('#blog-container').fadeIn(); // Show the blog content
+                // Set a flag to indicate that the user has visited before
+                localStorage.setItem('visitedBefore', 'true');
+            });
+
+            // If the user has visited before, show the blog content immediately
+            if (localStorage.getItem('visitedBefore') === 'true') {
+                $('#boot').hide();
+                $('#blog-container').show();
+            }
+        });
+    </script>
+</html>
